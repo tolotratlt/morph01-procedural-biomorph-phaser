@@ -1,6 +1,6 @@
 # Procedural Biomorph
 
-A real-time 2D interpretation of a Wolfram biomorph, built with Phaser 4, TypeScript, and Vite. The experience renders 10,000 calculated points as a synthetic organism whose crimson pulse travels upward through its structure.
+A real-time 2D interpretation of a [Wolfram biomorph](https://community.wolfram.com/groups/-/m/t/3529968), built with Phaser 4, TypeScript, and Vite. The experience renders 10,000 calculated points as a synthetic organism whose crimson pulse travels upward through its structure.
 
 ![MORPH 01 procedural biomorph preview](./public/morph01-preview.jpg)
 
