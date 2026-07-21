@@ -18,9 +18,8 @@ type Language = 'fr' | 'en';
 
 const translations = {
   fr: {
-    pageTitle: 'THETERROOT / Biomorphe procédural',
-    brandLabel: 'Theterroot, retour au début',
-    liveSystem: 'SYSTÈME VIVANT',
+    pageTitle: 'MORPH//01 / Biomorphe procédural',
+    brandLabel: 'Morph 01, retour au début',
     languageSelector: 'Choisir la langue',
     stageLabel: 'Expérience de biomorphe procédural',
     specimen: 'SPÉCIMEN 001',
@@ -41,9 +40,8 @@ const translations = {
     reset: 'RÉINITIALISER LE CYCLE',
   },
   en: {
-    pageTitle: 'THETERROOT / Procedural biomorph',
-    brandLabel: 'Theterroot, back to start',
-    liveSystem: 'LIVING SYSTEM',
+    pageTitle: 'MORPH//01 / Procedural biomorph',
+    brandLabel: 'Morph 01, back to start',
     languageSelector: 'Choose language',
     stageLabel: 'Procedural biomorph experience',
     specimen: 'SPECIMEN 001',
@@ -67,7 +65,7 @@ const translations = {
 
 type TranslationKey = keyof typeof translations.fr;
 
-const storedLanguage = localStorage.getItem('theterroot-language');
+const storedLanguage = localStorage.getItem('procedural-biomorph-language');
 let currentLanguage: Language = storedLanguage === 'fr' || storedLanguage === 'en'
   ? storedLanguage
   : navigator.language.toLowerCase().startsWith('fr') ? 'fr' : 'en';
@@ -84,7 +82,7 @@ const translate = (key: TranslationKey) => translations[currentLanguage][key];
 
 const applyLanguage = (language: Language) => {
   currentLanguage = language;
-  localStorage.setItem('theterroot-language', language);
+  localStorage.setItem('procedural-biomorph-language', language);
   document.documentElement.lang = language;
   document.title = translate('pageTitle');
 

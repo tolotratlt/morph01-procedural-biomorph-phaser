@@ -1,6 +1,8 @@
-# Theterroot Procedural Animation
+# Procedural Biomorph
 
 A real-time 2D interpretation of a Wolfram biomorph, built with Phaser 4, TypeScript, and Vite. The experience renders 10,000 calculated points as a synthetic organism whose crimson pulse travels upward through its structure.
+
+![MORPH 01 procedural biomorph preview](./public/morph01-preview.jpg)
 
 ## Features
 
@@ -54,6 +56,7 @@ The red region is not a separate shape. It is a periodic wave applied to the nor
 src/main.ts       Phaser scene, procedural equations, controls, and translations
 src/style.css     Responsive interface and visual system
 index.html        Application structure and accessible UI
+public/            Static assets, including the social preview image
 ```
 
 ## Technology
