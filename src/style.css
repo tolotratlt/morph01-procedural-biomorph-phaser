@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #e8e9e5;
+  background: #050505;
+  font-synthesis: none;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #game { margin: 0; width: 100%; height: 100%; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 42% 44%, rgba(72, 15, 18, 0.15), transparent 32%),
+    #050505;
+}
+
+button, input { font: inherit; }
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(460px, 1fr) 390px;
+  grid-template-rows: 74px minmax(650px, calc(100vh - 74px));
+  min-height: 100vh;
+}
+
+.topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  border-bottom: 1px solid #242424;
+  background: rgba(5, 5, 5, 0.86);
+  backdrop-filter: blur(12px);
+  z-index: 5;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: #f0f0eb;
+  text-decoration: none;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.brand-mark {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #f11f29;
+  transform: rotate(45deg);
+  box-shadow: inset 0 0 0 3px #050505, inset 0 0 0 4px #f11f29;
+}
+
+.status, .eyebrow, .specimen-meta, .coordinates, .interaction-hint {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: #777872;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+}
+
+.status > span:first-child {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #f11f29;
+  box-shadow: 0 0 8px #f11f29;
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+.language-switch {
+  display: flex;
+  align-items: center;
+  height: 31px;
+  padding: 0 9px;
+  border: 1px solid #292929;
+  background: #090909;
+}
+
+.language-switch button {
+  min-width: 27px;
+  padding: 5px 4px;
+  border: 0;
+  color: #666762;
+  background: transparent;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: color 160ms;
+}
+
+.language-switch button:hover,
+.language-switch button:focus-visible {
+  color: #e8e9e5;
+  outline: none;
+}
+
+.language-switch button.active { color: #f11f29; }
+
+.language-switch > span {
+  width: 1px;
+  height: 11px;
+  margin: 0 3px;
+  background: #343434;
+}
+
+@keyframes blink { 50% { opacity: 0.25; } }
+
+.stage {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  border-right: 1px solid #242424;
+  background: #050505;
+}
+
+#game {
+  position: absolute;
+  inset: 20px 70px 34px;
+  cursor: ew-resize;
+}
+
+#game canvas { display: block; }
+
+.specimen-meta {
+  position: absolute;
+  z-index: 2;
+  top: 25px;
+  left: 28px;
+  display: flex;
+  gap: 24px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.coordinates { position: absolute; right: 26px; top: 26px; line-height: 1.8; text-align: right; }
+.interaction-hint { position: absolute; left: 50%; bottom: 18px; margin: 0; transform: translateX(-50%); white-space: nowrap; }
+
+.console {
+  padding: clamp(32px, 5vh, 64px) 40px 34px;
+  background: rgba(9, 9, 9, 0.8);
+}
+
+.console-heading { display: flex; align-items: flex-start; justify-content: space-between; }
+.eyebrow { display: block; margin-bottom: 16px; color: #f11f29; }
+
+h1 {
+  margin: 0;
+  font-size: clamp(32px, 3vw, 45px);
+  line-height: 0.93;
+  letter-spacing: -0.055em;
+  font-weight: 500;
+}
+
+.pause {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #323232;
+  color: #e8e9e5;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 160ms, color 160ms;
+}
+
+.pause:hover, .pause:focus-visible { border-color: #f11f29; color: #f11f29; outline: none; }
+
+.description {
+  max-width: 310px;
+  margin: 30px 0 38px;
+  color: #91928d;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.controls { display: grid; gap: 27px; }
+.controls label > span { display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.13em; }
+.controls output { color: #a4a59f; }
+
+input[type='range'] {
+  width: 100%;
+  height: 14px;
+  margin-top: 9px;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-runnable-track { height: 1px; background: #3b3b3b; }
+input[type='range']::-webkit-slider-thumb { width: 8px; height: 8px; margin-top: -3.5px; appearance: none; border: 0; border-radius: 0; background: #f11f29; box-shadow: 0 0 8px rgba(241, 31, 41, 0.55); }
+input[type='range']::-moz-range-track { height: 1px; background: #3b3b3b; }
+input[type='range']::-moz-range-thumb { width: 8px; height: 8px; border: 0; border-radius: 0; background: #f11f29; }
+
+.formula {
+  display: grid;
+  gap: 7px;
+  margin: 38px 0 30px;
+  padding: 18px 0;
+  border-top: 1px solid #242424;
+  border-bottom: 1px solid #242424;
+}
+
+.formula .eyebrow { margin-bottom: 6px; color: #777872; }
+.formula code { color: #8c8d88; font-family: 'IBM Plex Mono', monospace; font-size: 9px; white-space: nowrap; }
+
+.reset {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 0;
+  border: 0;
+  border-bottom: 1px solid #f11f29;
+  color: #f11f29;
+  background: transparent;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  cursor: pointer;
+}
+
+.reset span { transition: transform 160ms; }
+.reset:hover span { transform: translate(3px, -3px); }
+
+@media (max-width: 880px) {
+  .shell { grid-template-columns: 1fr; grid-template-rows: 64px min(78vh, 760px) auto; }
+  .stage { border-right: 0; border-bottom: 1px solid #242424; }
+  .console { padding: 42px max(24px, 8vw) 60px; }
+  .description { max-width: 560px; }
+  #game { inset: 20px 48px 34px; }
+}
+
+@media (max-width: 520px) {
+  .topbar { padding: 0 18px; }
+  .status { display: none; }
+  .shell { grid-template-rows: 64px 68vh auto; }
+  #game { inset: 12px 22px 34px; }
+  .specimen-meta, .coordinates { display: none; }
+  .interaction-hint { font-size: 8px; }
+  .console { padding-left: 24px; padding-right: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status span { animation: none; }
+}
